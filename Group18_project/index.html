@@ -3,22 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classification Model</title>
-    <!-- Add any CSS styling here -->
+    <title>Startup Acquisition Prediction</title>
     <style>
-        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            width: 50%;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <h1>Classification Model</h1>
+    <h1>Startup Acquisition Prediction</h1>
     <form action="/predict" method="post">
         <label for="funding_total_usd">Funding Total (USD):</label>
-        <input type="text" id="funding_total_usd" name="funding_total_usd"><br><br>
+        <input type="text" id="funding_total_usd" name="funding_total_usd">
 
         <label for="funding_rounds">Funding Rounds:</label>
-        <input type="text" id="funding_rounds" name="funding_rounds"><br><br>
+        <input type="text" id="funding_rounds" name="funding_rounds">
 
-        <!-- Add more input fields for other features as needed -->
+        <label for="country_code">Country Code:</label>
+        <input type="text" id="country_code" name="country_code">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+        <label for="founded_year">Founded Year:</label>
+        <input type="text" id="founded_year" name="founded_year">
+
+        <label for="category_final">Category Final:</label>
+        <input type="text" id="category_final" name="category_final">
+
+        <label for="total_raised_usd">Total Raised (USD):</label>
+        <input type="text" id="total_raised_usd" name="total_raised_usd">
+
 
         <input type="submit" value="Predict">
     </form>

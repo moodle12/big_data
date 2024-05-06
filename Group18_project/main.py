@@ -9,7 +9,7 @@ spark = SparkSession.builder \
     .appName("ClassificationModel") \
     .getOrCreate()
 
-model = PipelineModel.load("path_to_your_model")
+model = PipelineModel.load("./gbt_model")
 
 # Define route for the home page
 @app.route('/')
@@ -23,7 +23,11 @@ def predict():
     features = {
         'funding_total_usd': request.form['funding_total_usd'],
         'funding_rounds': request.form['funding_rounds'],
-        # Add more features as needed
+        'country_code': request.form['country_code'],
+        'city': request.form['city'],
+        'founded_year': request.form['founded_year'],
+        'category_final': request.form['category_final'],
+        'total_raised_usd': request.form['total_raised_usd']
     }
 
     # Create a DataFrame from the form data
