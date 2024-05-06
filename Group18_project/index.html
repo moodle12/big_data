@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Model</title>
+    <!-- Add any CSS styling here -->
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Classification Model</h1>
+    <form action="/predict" method="post">
+        <label for="funding_total_usd">Funding Total (USD):</label>
+        <input type="text" id="funding_total_usd" name="funding_total_usd"><br><br>
+
+        <label for="funding_rounds">Funding Rounds:</label>
+        <input type="text" id="funding_rounds" name="funding_rounds"><br><br>
+
+        <!-- Add more input fields for other features as needed -->
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
