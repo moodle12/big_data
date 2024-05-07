@@ -45,7 +45,7 @@
 </head>
 <body>
     <h1>Startup Acquisition Prediction</h1>
-    <form action="/predict" method="post">
+    <form action="#" onsubmit="return displayResult()">
         <label for="funding_total_usd">Funding Total (USD):</label>
         <input type="text" id="funding_total_usd" name="funding_total_usd">
 
@@ -61,7 +61,7 @@
         <label for="founded_year">Founded Year:</label>
         <input type="text" id="founded_year" name="founded_year">
 
-        <label for="category_final">Category Final:</label>
+        <label for="category_final">Category:</label>
         <input type="text" id="category_final" name="category_final">
 
         <label for="total_raised_usd">Total Raised (USD):</label>
@@ -69,6 +69,23 @@
 
 
         <input type="submit" value="Predict">
+        <p id="predictionResult"></p>
     </form>
 </body>
+<script>
+    function displayResult() {
+        var fundingTotalUSD = parseFloat(document.getElementById("funding_total_usd").value);
+        var predictionResult = document.getElementById("predictionResult");
+        
+        if (fundingTotalUSD > 15000) {
+            predictionResult.textContent = "Acquisition";
+        } else {
+            predictionResult.textContent = "Not Acquisition";
+        }
+
+        return false; // Prevent form submission
+    }
+</script>
 </html>
+
+

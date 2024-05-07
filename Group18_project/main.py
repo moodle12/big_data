@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from pyspark.ml import PipelineModel
+from pyspark.ml.pipeline import PipelineModel
 from pyspark.sql import SparkSession
 
 app = Flask(__name__)
@@ -9,7 +9,11 @@ spark = SparkSession.builder \
     .appName("ClassificationModel") \
     .getOrCreate()
 
-model = PipelineModel.load("./gbt_model")
+# Specify the path to the saved model folder
+mPath = "./gbt_model"
+
+# Load the model
+model = PipelineModel.load(mPath)
 
 # Define route for the home page
 @app.route('/')
@@ -31,16 +35,19 @@ def predict():
     }
 
     # Create a DataFrame from the form data
-    df = spark.createDataFrame([features])
+    sample_row = spark.createDataFrame([features])
 
-    # Make predictions using the model
-    predictions = model.transform(df)
+    # Make prediction on the sample row
+    prediction = model.transform(sample_row)
+
+    # Show the prediction result
+    prediction.select("features", "prediction").show()
 
     # Get the prediction result
-    prediction = predictions.select('prediction').collect()[0][0]
+    prediction_value = prediction.select('prediction').collect()[0][0]
 
     # Display the prediction result
-    result = "Acquisition" if prediction == 1 else "Not Acquisition"
+    result = "Acquisition" if prediction_value == 1 else "Not Acquisition"
 
     return render_template('result.html', result=result)
 
